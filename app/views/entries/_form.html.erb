@@ -1,0 +1,42 @@
+<%= form_with(model: entry) do |form| %>
+  <% if entry.errors.any? %>
+
+    <div style="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</p>
+      </div>
+
+      <div class="message-body">
+        <ul>
+          <% entry.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :activity_name, style: "display: block", class: "label" %>
+    <%= form.text_field :activity_name, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duration, style: "display: block", class: "label"%>
+    <%= form.number_field :duration , class: "input"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :calories_burned, style: "display: block", class: "label" %>
+    <%= form.number_field :calories_burned, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date, style: "display: block", class: "label" %>
+    <%= form.datetime_field :date, class: "input" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "is-success" %>
+  </div>
+<% end %>

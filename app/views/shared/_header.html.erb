@@ -1,0 +1,42 @@
+<section class="hero is-black is-small">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <%= link_to root_path, class: "navbar-item" do %>
+               <%= image_tag "Fitness_Tracker_logo.png", alt: "Image description" %>
+               <%# <span class="has-textweight_bold  ml-4">FitnessTracker</span> %>
+            <% end %>
+          </a>
+          <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span class="title">New</span>
+            <span>Old</span>
+            <span>Edit</span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <span class="navbar-item">
+                <%= link_to "Create New Entry", new_entry_path, class: "button is-success" %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title">
+        <% if content_for(:title) %>
+            <%= yield :title %>
+        <% else %>
+            FitnessTracker
+        <% end %>
+      </p>
+    </div>
+  </div>
+</section>

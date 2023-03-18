@@ -1,0 +1,29 @@
+<% content_for :title do %>
+  FitnessTracker
+<% end %>
+
+
+<div class="columns mt-6 is-centered">
+  <% @entries.each do |entry| %>
+    <div clas="column is-one-third" >
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title"><%= entry.activity_name %></p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <p><span class="has-text-weight-bold">Duration: <%= entry.duration %></span>mins</p>
+            <p><span class="has-text-weight-bold">Calories: <%= entry.calories_burned %></span></p>
+            <%# <p><span class="has-text-weight-bold">Date: <%= entry.date</span></p> %>
+            <p><span class="has-text-weight-bold"><%= time_ago_in_words(entry.created_at) %> ago</span></p>
+          </div>
+        </div> 
+        <div class="card-footer">
+          <%= link_to "Show", entry, class: "card-footer-item" %>
+          <%= link_to "Edit", edit_entry_path(entry), class: "card-footer-item" %>
+          <%= link_to "Delete", entry, method: :delete, data: { confirm: "are you sure?" }, class: "card-footer-item" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

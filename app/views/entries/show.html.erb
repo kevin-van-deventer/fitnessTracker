@@ -1,0 +1,38 @@
+<% content_for :title do %>
+  <%= @entry.activity_name %>
+<% end %>
+
+<div class="columns mt-6 is-centered">
+  <div class="column is-one-quarter">
+
+    <nav class="panel is-black">
+      <p class="panel-heading">
+        <%= @entry.activity_name %>
+      </p>
+
+      <div class="panel-block">
+        Duration: <%= @entry.duration %>mins
+      </div>
+
+      <div class="panel-block">
+        Calories: <%= @entry.calories_burned %>
+      </div>
+
+      <div class="panel-block">
+       <%= time_ago_in_words(@entry.created_at) %> ago
+      </div>
+    </nav>
+
+    <div class="columns is-mobile">
+      <div class="column">
+        <%= link_to "Edit", edit_entry_path(@entry), class: "button is-success" %>
+        <%= link_to "Back", entries_path, class: "button is-link" %>
+        <%= button_to "Del", entry_path(@entry), method: :delete, class: "button is-danger", data: { confirm: "Are you sure?" } %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
