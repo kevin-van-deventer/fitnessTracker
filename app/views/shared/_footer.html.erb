@@ -1,0 +1,63 @@
+<footer class="footer has-background-dark">
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column">
+        <nav class="level is-mobile">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><a href="/" class="has-text-white">Home</a></p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link has-text-white">
+                  Categories
+                </a>
+                <div class="navbar-dropdown has-background-dark">
+                  <%= form_tag entries_path, method: :get, class: "select-form" do %>
+                    <div class="field has-addons">
+                      <div class="control">
+                        <%= select_tag :category, options_for_select(Category.all.collect { |c| [c.name, c.id] }), prompt: "Select a category", class: "select is-rounded is-info is-medium" %>
+                      </div>
+                      <div class="control">
+                        <%= submit_tag "Select", class: "button is-info is-rounded is-medium" %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><a href="/entries/new" class="has-text-white">New Entry</a></p>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-centered has-text-white">Copyright © 2023
+          Move and Groove
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+ html {
+  position: relative;
+  min-height: 100%;
+}
+
+footer {
+  position: absolute;
+  bottom: -150px;
+  width: 100%;
+  height: 100px;
+  margin-top: 150px; /* change this value to be greater than 100px */
+}
+</style>

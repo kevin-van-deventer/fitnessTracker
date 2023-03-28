@@ -2,34 +2,36 @@
   Move and Groove
 <% end %>
 
-<div class="jumbotron has-background-info is-rounded">
-  <h1 class="title is-1 has-text-white has-text-centered" style="padding: 1rem;">Get Fit and Groove On</h1>
-  <p class="subtitle is-4 has-text-white has-text-centered" style="padding: 1rem;">Your Ultimate Fitness Tracker!</p>
-</div>
+
+  <div class="jumbotron has-background-info is-rounded">
+    <h1 class="title is-1 has-text-white has-text-centered" style="padding: 1rem;">Get Fit and Groove On</h1>
+    <p class="subtitle is-4 has-text-white has-text-centered" style="padding: 1rem;">Your Ultimate Fitness Tracker!</p>
+  </div>
 
 
 
-<div class="columns is-multiline is-centered mt-6">
-  <% @entries.each do |entry| %>
-    <div class="column is-one-quarter">
-      <div class="card has-margin has-border is-bordered has-rounded-corners is-medium-rounded">
-        <header class="card-header">
-          <p class="card-header-title"><%= entry.activity_name %></p>
-        </header>
-        <div class="card-content">
-          <div class="content">
-            <p><span class="has-text-weight-bold">Duration: <%= entry.duration %> mins</span></p>
-            <p><span class="has-text-weight-bold">Calories: <%= entry.calories_burned %></span></p>
-            <% if entry.created_at > 24.hours.ago %>
-              <p><span class="has-text-weight-bold"><%= time_ago_in_words(entry.created_at) %> ago</span></p>
-            <% else %>
-              <p><span class="has-text-weight-bold">Date: <%= entry.date.strftime("%B %d, %Y") %></span></p>
-              <p><span class="has-text-weight-bold">Time: <%= entry.date.strftime("%I:%M %p") %></span></p>
-            <% end %>
-            <%= link_to 'View', entry_path(entry), class: "button is-info is-small" %>
+  <div class="columns is-multiline is-centered mt-6">
+    <% @entries.each do |entry| %>
+      <div class="column is-one-quarter">
+        <div class="card has-margin has-border is-bordered has-rounded-corners is-medium-rounded">
+          <header class="card-header">
+            <p class="card-header-title"><%= entry.activity_name %></p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p><span class="has-text-weight-bold">Duration: <%= entry.duration %> mins</span></p>
+              <p><span class="has-text-weight-bold">Calories: <%= entry.calories_burned %></span></p>
+              <% if entry.created_at > 24.hours.ago %>
+                <p><span class="has-text-weight-bold"><%= time_ago_in_words(entry.created_at) %> ago</span></p>
+              <% else %>
+                <p><span class="has-text-weight-bold">Date: <%= entry.date.strftime("%B %d, %Y") %></span></p>
+                <p><span class="has-text-weight-bold">Time: <%= entry.date.strftime("%I:%M %p") %></span></p>
+              <% end %>
+              <%= link_to 'View', entry_path(entry), class: "button is-info is-small" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 </div>
+
