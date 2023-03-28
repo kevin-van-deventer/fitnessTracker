@@ -1,5 +1,7 @@
 # README
 
+# Starting
+
 - open ruby terminal
 - rails new fitnessTracker
 - cd into directory with cd/fitnessTracker
@@ -14,6 +16,12 @@
 - rails g scaffold Entry activity_name:string duration:integer calories_burned:integer date:datetime
 
 - rails db:migrate
+
+# Add
+
+- gem devise
+- datetime order
+-
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

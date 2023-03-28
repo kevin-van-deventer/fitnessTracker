@@ -1,6 +1,5 @@
 <%= form_with(model: entry) do |form| %>
   <% if entry.errors.any? %>
-
     <div style="message is-danger">
       <div class="message-header">
         <p><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</p>
@@ -29,6 +28,28 @@
   <div class="field">
     <%= form.label :calories_burned, style: "display: block", class: "label" %>
     <%= form.number_field :calories_burned, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rep_count, style: "display: block", class: "label" %>
+    <%= form.number_field :rep_count, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight, style: "display: block", class: "label" %>
+    <%= form.number_field :weight, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :distance, style: "display: block", class: "label" %>
+    <%= form.number_field :distance, class: "input" %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :category, style: "display: block", class: "label" %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "Select a category" }, class: "input" %>
+    <%# <%= form.select :category_id, Category.all.collect {|c| [c.name, c.id]} %>
+
   </div>
 
   <div class="field">

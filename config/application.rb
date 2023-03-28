@@ -10,6 +10,13 @@ module FitnessTracker
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.assets.precompile += %w( *.scss )
+    # config.time_zone = 'your time zone'
+    # config.active_record.default_timezone = :local
+    # config.active_record.time_zone_aware_attributes = false
+    # config.i18n.default_locale = :your_locale
+
+    # config.time_formats[:default] = "%B %e, %Y"
 
     # Configuration for the application, engines, and railties goes here.
     #

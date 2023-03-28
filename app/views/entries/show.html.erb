@@ -19,17 +19,38 @@
       </div>
 
       <div class="panel-block">
+        Reps: <%= @entry.rep_count %>
+      </div>
+
+      <div class="panel-block">
+        Weight: <%= @entry.weight %>
+      </div>
+
+      <div class="panel-block">
+        Distance: <%= @entry.distance %>
+      </div>
+
+      <div class="panel-block">
+        Category: <%= @entry.category.name %>
+      </div>
+
+      <div class="panel-block">
        <%= time_ago_in_words(@entry.created_at) %> ago
       </div>
     </nav>
 
-    <div class="columns is-mobile">
-      <div class="column">
-        <%= link_to "Edit", edit_entry_path(@entry), class: "button is-success" %>
-        <%= link_to "Back", entries_path, class: "button is-link" %>
-        <%= button_to "Del", entry_path(@entry), method: :delete, class: "button is-danger", data: { confirm: "Are you sure?" } %>
-      </div>
+   <div class="columns is-mobile">
+    <div class="column is-narrow is-inline-block">
+      <%= link_to "Edit", edit_entry_path(@entry), class: "button is-success" %>
     </div>
+    <div class="column is-narrow is-inline-block">
+      <%= link_to "Back", entries_path, class: "button is-link" %>
+    </div>
+    <div class="column is-narrow is-inline-block">
+      <%= button_to "Del", entry_path(@entry), method: :delete, class: "button is-danger", data: { confirm: "Are you sure?" } %>
+    </div>
+  </div>
+
 
   </div>
 </div>

@@ -3,8 +3,13 @@ class EntriesController < ApplicationController
 
   # GET /entries or /entries.json
   def index
-    @entries = Entry.all
+    if params[:category]
+      @entries = Entry.where(category_id: params[:category])
+    else
+      @entries = Entry.all
+    end
   end
+  
 
   # GET /entries/1 or /entries/1.json
   def show
@@ -65,6 +70,6 @@ class EntriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entry_params
-      params.require(:entry).permit(:activity_name, :duration, :calories_burned, :date)
+      params.require(:entry).permit(:activity_name, :duration, :calories_burned, :category_id, :date)
     end
 end

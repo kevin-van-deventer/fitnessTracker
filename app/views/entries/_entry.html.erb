@@ -3,20 +3,49 @@
     <strong>Activity name:</strong>
     <%= entry.activity_name %>
   </p>
-
   <p>
     <strong>Duration:</strong>
     <%= entry.duration %>
   </p>
-
   <p>
     <strong>Calories burned:</strong>
     <%= entry.calories_burned %>
   </p>
+<% if entry.category %>
+<p>
+<strong>Category:</strong>
+<%= entry.category.name %>
+</p>
+<% else %>
+<p>
+<strong>Category:</strong>
+None
+</p>
+<% end %>
+
+<% if entry.reps %>
+<p>
+<strong>Reps:</strong>
+<%= entry.reps %>
+</p>
+<% end %>
+
+<% if entry.weight %>
+<p>
+<strong>Weight:</strong>
+<%= entry.weight %>
+</p>
+<% end %>
+
+<% if entry.distance %>
+<p>
+<strong>Distance:</strong>
+<%= entry.distance %>
+</p>
+<% end %>
 
   <p>
     <strong>Date:</strong>
     <%= entry.date %>
   </p>
-
 </div>
