@@ -2,6 +2,12 @@
   Move and Groove
 <% end %>
 
+<div class="jumbotron has-background-info is-rounded">
+  <h1 class="title is-1 has-text-white has-text-centered" style="padding: 1rem;">Get Fit and Groove On</h1>
+  <p class="subtitle is-4 has-text-white has-text-centered" style="padding: 1rem;">Your Ultimate Fitness Tracker!</p>
+</div>
+
+
 
 <div class="columns is-multiline is-centered mt-6">
   <% @entries.each do |entry| %>
@@ -20,6 +26,7 @@
               <p><span class="has-text-weight-bold">Date: <%= entry.date.strftime("%B %d, %Y") %></span></p>
               <p><span class="has-text-weight-bold">Time: <%= entry.date.strftime("%I:%M %p") %></span></p>
             <% end %>
+            <%= link_to 'View', entry_path(entry), class: "button is-info is-small" %>
           </div>
         </div>
       </div>

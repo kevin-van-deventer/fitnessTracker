@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_entry, only: [:show, :edit, :update, :destroy]
 
   def index
     if user_signed_in?
@@ -13,26 +14,12 @@ class EntriesController < ApplicationController
     end
   end
 
-  def entry_params
-    params.require(:entry).permit(:activity_name, :duration, :calories_burned, :category_id, :date, :rep_count, :weight, :distance)
-  end
-  
-  # GET /entries/1 or /entries/1.json
-  def show
-  end
-
-  # GET /entries/new
   def new
-    @entry = Entry.new
+    @entry = current_user.entries.build
   end
 
-  # GET /entries/1/edit
-  def edit
-  end
-
-  # POST /entries or /entries.json
   def create
-    @entry = Entry.new(entry_params)
+    @entry = current_user.entries.build(entry_params)
 
     respond_to do |format|
       if @entry.save
@@ -45,7 +32,9 @@ class EntriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /entries/1 or /entries/1.json
+  def edit
+  end
+
   def update
     respond_to do |format|
       if @entry.update(entry_params)
@@ -58,7 +47,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  # DELETE /entries/1 or /entries/1.json
   def destroy
     @entry.destroy
 
@@ -69,13 +57,12 @@ class EntriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_entry
-      @entry = Entry.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def entry_params
-      params.require(:entry).permit(:activity_name, :duration, :calories_burned, :category_id, :date)
-    end
+  def set_entry
+    @entry = current_user.entries.find(params[:id])
+  end
+
+  def entry_params
+    params.require(:entry).permit(:activity_name, :duration, :calories_burned, :category_id, :date, :rep_count, :weight, :distance)
+  end
 end
