@@ -1,32 +1,17 @@
 <% content_for :title do %>
-  FitnessTracker 
+  Move and Groove
 <% end %>
 
-<div class="columns is-multiline is-centered mt-6">
-  <div class="column is-half">
-    <%= form_tag entries_path, method: :get, class: "select-form" do %>
-      <div class="field has-addons">
-        <div class="control">
-          <%= select_tag :category, options_for_select(Category.all.collect { |c| [c.name, c.id] }), prompt: "Select a category", class: "select is-rounded is-info is-medium" %>
-        </div>
-        <div class="control">
-          <%= submit_tag "Select", class: "button is-info is-rounded is-medium" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
 
 <div class="columns is-multiline is-centered mt-6">
   <% @entries.each do |entry| %>
-    <div class="column is-half">
+    <div class="column is-one-quarter">
       <div class="card has-margin has-border is-bordered has-rounded-corners is-medium-rounded">
         <header class="card-header">
-          <p class="card-header-title"><%= entry.category.name %></p>
+          <p class="card-header-title"><%= entry.activity_name %></p>
         </header>
         <div class="card-content">
           <div class="content">
-            <p><span class="has-text-weight-bold"><%= entry.activity_name %></span></p>
             <p><span class="has-text-weight-bold">Duration: <%= entry.duration %> mins</span></p>
             <p><span class="has-text-weight-bold">Calories: <%= entry.calories_burned %></span></p>
             <% if entry.created_at > 24.hours.ago %>

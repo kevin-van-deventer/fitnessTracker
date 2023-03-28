@@ -1,16 +1,22 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
-  # GET /entries or /entries.json
   def index
-    if params[:category]
-      @entries = Entry.where(category_id: params[:category])
+    if user_signed_in?
+      if params[:category]
+        @entries = current_user.entries.where(category_id: params[:category]).order(date: :asc)
+      else
+        @entries = current_user.entries.all.order(date: :asc)
+      end
     else
-      @entries = Entry.all
+      redirect_to new_user_session_path
     end
   end
-  
 
+  def entry_params
+    params.require(:entry).permit(:activity_name, :duration, :calories_burned, :category_id, :date, :rep_count, :weight, :distance)
+  end
+  
   # GET /entries/1 or /entries/1.json
   def show
   end

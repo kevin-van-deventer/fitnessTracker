@@ -1,42 +1,64 @@
-<section class="hero is-black is-small">
-  <!-- Hero head: will stick at the top -->
-  <div class="hero-head">
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item">
-            <%= link_to root_path, class: "navbar-item" do %>
-               <%= image_tag "Fitness_Tracker_logo.png", alt: "Image description" %>
-               <%# <span class="has-textweight_bold  ml-4">FitnessTracker</span> %>
-            <% end %>
-          </a>
-          <span class="navbar-burger" data-target="navbarMenuHeroA">
-            <span class="title">New</span>
-            <span>Old</span>
-            <span>Edit</span>
-          </span>
-        </div>
-        <div id="navbarMenuHeroA" class="navbar-menu">
-          <div class="navbar-end">
-            <span class="navbar-item">
-                <%= link_to "Create New Entry", new_entry_path, class: "button is-success" %>
-            </span>
-          </div>
-        </div>
-      </div>
-    </nav>
+<nav class="navbar is-spaced is-dark is-double_height" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item is-large" href="/">
+      <%= image_tag "Fitness_Tracker_logo.png", alt: "Image description", class: "is-size-2 p-0" %>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
   </div>
 
-  <!-- Hero content: will be in the middle -->
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <p class="title">
-        <% if content_for(:title) %>
-            <%= yield :title %>
-        <% else %>
-            FitnessTracker
-        <% end %>
-      </p>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        Home
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Categories
+        </a>
+
+        <div class="navbar-dropdown has-background-dark">
+          <%= form_tag entries_path, method: :get, class: "select-form" do %>
+            <div class="field has-addons">
+              <div class="control">
+                <%= select_tag :category, options_for_select(Category.all.collect { |c| [c.name, c.id] }), prompt: "Select a category", class: "select is-rounded is-info is-medium" %>
+              </div>
+              <div class="control">
+                <%= submit_tag "Select", class: "button is-info is-rounded is-medium" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    
+    <h1 class="navbar-item has-text-light is-size-2 has-text-centered has-text-weight-bold">Move and Groove</h1>
+
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+            <a class="button is-primary" href="/entries/new">
+              New
+            </a>
+        </div>
+      </div>
+      <div class="navbar-item">
+        <div class="buttons">
+          <% if user_signed_in? %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "button is-primary" %>
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path, class: "button is-primary" %>
+            <%= link_to "Register", new_user_registration_path, class: "button is-primary" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</nav>
