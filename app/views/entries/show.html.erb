@@ -7,7 +7,7 @@
 
     <nav class="panel is-black">
       <p class="panel-heading">
-        <%= @entry.activity_name %>
+        <%= @entry.activity.name %>
       </p>
 
       <div class="panel-block">
@@ -23,11 +23,11 @@
       </div>
 
       <div class="panel-block">
-        Weight: <%= @entry.weight %>
+        Weight: <%= @entry.weight %>kg
       </div>
 
       <div class="panel-block">
-        Distance: <%= @entry.distance %>
+        Distance: <%= @entry.distance %>m
       </div>
 
       <div class="panel-block">

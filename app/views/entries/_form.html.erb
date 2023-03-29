@@ -16,8 +16,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :activity_name, style: "display: block", class: "label" %>
-    <%= form.text_field :activity_name, class: "input" %>
+    <%= form.label :activity_id, style: "display: block", class: "label" %>
+<%= form.collection_select :activity_id, Activity.all, :id, :name, { prompt: "Select an activity" }, class: "input" %>
   </div>
 
   <div class="field">

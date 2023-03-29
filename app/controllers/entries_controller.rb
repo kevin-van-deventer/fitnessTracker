@@ -5,7 +5,7 @@ class EntriesController < ApplicationController
   def index
     if user_signed_in?
       if params[:category]
-        @entries = current_user.entries.where(category_id: params[:category]).order(date: :asc)
+        @entries = current_user.entries.where( category_id:params[:category]).order(date: :asc)
       else
         @entries = current_user.entries.all.order(date: :asc)
       end
@@ -63,6 +63,6 @@ class EntriesController < ApplicationController
   end
 
   def entry_params
-    params.require(:entry).permit(:activity_name, :duration, :calories_burned, :category_id, :date, :rep_count, :weight, :distance)
+    params.require(:entry).permit(:activity_id, :duration, :calories_burned, :category_id, :date, :rep_count, :weight, :distance)
   end
 end
